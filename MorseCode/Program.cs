@@ -34,28 +34,44 @@ namespace MorseCode
                 }
             }
 
-            //split strings in dictionary to char and strings???
-
             //request user input
             Console.WriteLine("What would you like translated to morse code?");
             string toBeTranslated = Console.ReadLine().ToUpper();
 
-            //  Directions: Using the dictionary created, translate the inputed string into morse code
-            //break apart user input to chars
-            
             //for each letter in user input, return equivalent character from dictionary
-            foreach (var indivLetter in toBeTranslated)
+            //You need to display that string back to the user in Morse Code
+            var translatedString = "";
+            foreach (var letter in toBeTranslated)
             {
-                Console.WriteLine(morseCodeDictionary[indivLetter]);
+                Console.WriteLine(morseCodeDictionary[letter]);
+                translatedString += (morseCodeDictionary[letter]);
             }
 
-
-
-
-            //You need to display that string back to the user in Morse Code
             //Save the users input to a CSV as both the original string and encoded.
+
+            var storedmorseCodeCSV = "storedmorse.csv";
+
+            using (StreamWriter sw = File.AppendText(storedmorseCodeCSV))
+            {
+                sw.WriteLine(toBeTranslated);
+                sw.WriteLine(translatedString);
+            }
+
             //Ask the user if they have any more messages that they want to encode
             //repeat steps 2 - 6 until the user elects to step
+
+            Console.WriteLine("Do you have any more messages to encode - Y or N? ");
+            var repeat = Console.ReadLine();
+
+            if (repeat == "Y")
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("Thank you, come again.");
+            }
+            
 
 
         }
