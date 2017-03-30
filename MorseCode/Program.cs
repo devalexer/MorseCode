@@ -61,11 +61,18 @@ namespace MorseCode
             //repeat steps 2 - 6 until the user elects to step
 
             Console.WriteLine("Do you have any more messages to encode - Y or N? ");
-            var repeat = Console.ReadLine();
+            var repeat = Console.ReadLine().ToUpper();
 
             if (repeat == "Y")
             {
+                Console.WriteLine("What would you like translated to morse code?");
+                string additionalTranslation = Console.ReadLine().ToUpper();
 
+                foreach (var letter in additionalTranslation)
+                {
+                    Console.WriteLine(morseCodeDictionary[letter]);
+                    translatedString += (morseCodeDictionary[letter]);
+                }
             }
             else
             {
